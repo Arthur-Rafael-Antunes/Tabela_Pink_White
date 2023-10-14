@@ -3,14 +3,39 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width= devide-width, initial-scale=1.0">
-    <link rel=" stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <title>The Periodic Table</title>
     <style>
-        body { 
-            background-image: url('/static/images/fundo_verde.jpg');
-            background-size: cover; 
-            background-repeat: no-repeat; 
+        body {
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transition: background-image 0.5s;
+        }
+
+        .green-mode {
+            background-image: url("file:///C:/Users/guilh/Desktop/tfa/Flask/static/images/fundo_rosa.jpg");
+        }
+
+        .purple-mode {
+            background-image: url("file:///C:/Users/guilh/Desktop/tfa/Flask/static/images/fundo_verde.jpg");
+        }
+
+        .blue-mode {
+            background-image: url("file:///C:/Users/guilh/Desktop/tfa/Flask/static/images/fundo_roxo.jpg");
+        }
+
+        .orange-mode {
+            background-image: url("file:///C:/Users/guilh/Desktop/tfa/Flask/static/images/fundo_laranja.jpg");
+        }
+
+        #theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
         }
 
         * {
@@ -21,11 +46,9 @@
 
         td {
             width: 4vw;
-            border: 1px black;
+            border: 1px solid black; /* Corrija o estilo da borda */
             text-align: center;
         }
-
-         
 
         .headingOne {
             background-color: rgb(255, 255, 255);
@@ -34,70 +57,62 @@
         }
 
         ._color_1 {
-            border: 1px;
-            border-style: solid;
-            border-color: #000000;
+            border: 1px solid black; /* Corrija o estilo da borda */
             background-color: #e6b629;
         }
 
         .color_2 {
-            border: 1px;
-            border-style: solid;
-            border-color: #000000;
+            border: 1px solid black; /* Corrija o estilo da borda */
             background-color: #2b6464;
         }
 
         .color_3 {
-            border: 1px;
-            border-style: solid;
+            border: 1px solid black; /* Corrija o estilo da borda */
             background-color: #90c7ff;
         }
 
         .color_4 {
-            border: 1px;
-            border-style: solid;
+            border: 1px solid black; /* Corrija o estilo da borda */
             background-color: #fceff0;
         }
 
         .color_5 {
-            border: 1px;
-            border-style: solid;
+            border: 1px solid black; /* Corrija o estilo da borda */
             background-color: #fff28e;
         }
 
         .color_6 {
-            border: 1px;
-            border-style: solid;
+            border: 1px solid black; /* Corrija o estilo da borda */
             background-color: #c79810;
         }
 
         .color_7 {
-            border: 1px;
-            border-style: solid;
+            border: 1px solid black; /* Corrija o estilo da borda */
             background-color: #cdeb8b;
         }
 
         .color_8 {
-            border: 1px;
-            border-style: solid;
+            border: 1px solid black; /* Corrija o estilo da borda */
             background-color: #ebdca9;
         }
 
         .color_9 {
-            border: 1px;
-            border-style: solid;
+            border: 1px solid black; /* Corrija o estilo da borda */
             background-color: #e6e6fa;
         }
 
         .text_color_green {
             color: green;
         }
-
-       
+        .noBorder
+        {
+            border: 0px;
+        }
     </style>
 </head>
 
-<body>
+<body class="purple-mode">
+    <button id="theme-toggle">Alternar Tema</button>
     <center>
         <h1 class="headingOne">The Periodic Table</h1>
         <table>
@@ -109,7 +124,9 @@
             <tr border="on">
                 <td class="color_2">3<br />Li</td>
                 <td class="color_3">4<br />Be</td>
+
                 <td class="noBorder" colspan="10"></td>
+
                 <td class="color_6">5<br />Be</td>
                 <td class="_color_1">6<br />C</td>
                 <td class="_color_1 ">7<br />N</td>
@@ -117,7 +134,7 @@
                 <td class="color_8 ">9<br />F</td>
                 <td class="color_9 ">10<br />Ne</td>
             </tr>
-            <tr>
+                 <tr>
                 <td class="color_2">11<br />Na</td>
                 <td class="color_3">12<br />Mg</td>
                 <td class="noBorder" colspan="10"></td>
@@ -128,7 +145,7 @@
                 <td class="color_8 ">17<br />Cl</td>
                 <td class="color_9 ">18<br />Ar</td>
             </tr>
-            <tr>
+             <tr>
                 <td class="color_2">19<br />K</td>
                 <td class="color_3">20<br />Ca</td>
                 <td class="color_5">21<br />Sc</td>
@@ -241,9 +258,24 @@
                 <td class="color_4 text_color_red">101<br />Md</td>
                 <td class="color_4 text_color_red">102<br />No</td>
                 <td class="color_4 text_color_red">103<br />Lr</td>
-            </tr>
         </table>
     </center>
-</body>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const modes = ['purple-mode', 'green-mode', 'blue-mode', 'orange-mode'];
+        let currentModeIndex = 0;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.remove(modes[currentModeIndex]);
+            currentModeIndex = (currentModeIndex + 1) % modes.length;
+            body.classList.add(modes[currentModeIndex]);
+        });
+        </script>
+    </tr>
+    </table>
+    </center>
+    </body>
 
 </html>
