@@ -108,13 +108,19 @@
         {
             border: 0px;
         }
+        img{
+            width: 100px;
+            height: auto;
+            padding: 525px 0px 0px 0px;
+        }
     </style>
 </head>
 
 <body class="purple-mode">
-    <button id="theme-toggle">Alternar Tema</button>
     <center>
-        <h1 class="headingOne">The Periodic Table</h1>
+        <h1 class="headingOne">The Periodic Table</h1></center>
+        <img src="botao.png" width="" height="" id=theme-toggle>
+        <center>
         <table>
             <tr>
                 <td class="_color_1 text_color_green">1<br />H</td>
@@ -271,6 +277,9 @@
             body.classList.remove(modes[currentModeIndex]);
             currentModeIndex = (currentModeIndex + 1) % modes.length;
             body.classList.add(modes[currentModeIndex]);
+
+            const imageSources = ['botao.png', 'jesse.png', 'guz.png', 'saul.png'];
+            themeToggle.src = imageSources[currentModeIndex];
         });
         </script>
     </tr>
