@@ -2,14 +2,126 @@
 <html>
 <head>
     <title>Calculadora</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transition: background-image 0.5s;
+        }
+
+        .green-mode {
+            background-image: url("/static/images/fundo_rosa.jpg");
+        }
+
+        .purple-mode {
+            background-image: url("/static/images/fundo_verde.jpg");
+        }
+
+        .blue-mode {
+            background-image: url("/static/images/fundo_roxo.jpg");
+        }
+
+        .orange-mode {
+            background-image: url("/static/images/fundo_laranja.jpg");
+        }
+
+        #theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        * {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 600;
+        }
+
+        td {
+            width: 4vw;
+            border: 1px solid black; /* Corrija o estilo da borda */
+            text-align: center;
+        }
+
+        .headingOne {
+            background-color: rgb(255, 255, 255);
+            padding: 5px;
+            font-size: 5vw;
+        }
+
+        ._color_1 {
+            border: 1px solid black; /* Corrija o estilo da borda */
+            background-color: #e6b629;
+        }
+
+        .color_2 {
+            border: 1px solid black; /* Corrija o estilo da borda */
+            background-color: #2b6464;
+        }
+
+        .color_3 {
+            border: 1px solid black; /* Corrija o estilo da borda */
+            background-color: #90c7ff;
+        }
+
+        .color_4 {
+            border: 1px solid black; /* Corrija o estilo da borda */
+            background-color: #fceff0;
+        }
+
+        .color_5 {
+            border: 1px solid black; /* Corrija o estilo da borda */
+            background-color: #fff28e;
+        }
+
+        .color_6 {
+            border: 1px solid black; /* Corrija o estilo da borda */
+            background-color: #c79810;
+        }
+
+        .color_7 {
+            border: 1px solid black; /* Corrija o estilo da borda */
+            background-color: #cdeb8b;
+        }
+
+        .color_8 {
+            border: 1px solid black; /* Corrija o estilo da borda */
+            background-color: #ebdca9;
+        }
+
+        .color_9 {
+            border: 1px solid black; /* Corrija o estilo da borda */
+            background-color: #e6e6fa;
+        }
+
+        .text_color_green {
+            color: green;
+        }
+        .noBorder
+        {
+            border: 0px;
+        }
+        img{
+            width: 100px;
+            height: auto;
+            padding: 525px 0px 0px 0px;
+        }
+        button{
+            border:transparent;
+            background-color:transparent;
+        }
+    </style>
 </head>
-<body>
+<body class="purple-mode">
     <center>
-    <h1>Calculadora Intelgente, escolha os modos</h1>
+    <h1 class="headingOne">Calculadora Inteligente </h1>
         <form method="POST">
-            <input type="text" name="numero1" placeholder="Reagentes">
+            <input type="text" name="numero1"  class="barra" placeholder="Reagentes">
             <br> <br>
-            <input type="text" name="numero2" placeholder="Produtos">
+            <input type="text" name="numero2"  class="barra" placeholder="Produtos">
             <br> <br>
             <select name="operacao">
                 <option value="soma">Balanciamento</option>
@@ -19,7 +131,397 @@
             </select>
             <input type="submit" value="Calcular">
         </form>
-    </center>
     <h2>Resultado: {{ resultado }}</h2>
+    <br><br>
+    <table>
+        <tr>
+            <td class="_color_1 text_color_green">
+                <button onclick="adicionarElemento('H')">1<br/>H</button>
+            </td>
+            <td class="noBorder" colspan="16"></td>
+            <td class="color_9 ">
+                <button onclick="adicionarElemento('He')">2<br/>He</button>
+            </td>
+        </tr>
+        <tr border="on">
+            <td class="color_2">
+                <button onclick="adicionarElemento('Li')">3<br/>Li</button>
+            </td>
+            <td class="color_3">
+                <button onclick="adicionarElemento('Be')">4<br/>Be</button>
+            </td>
+
+            <td class="noBorder" colspan="10"></td>
+
+            <td class="color_6">
+              <button onclick="adicionarElemento('B')"> 5<br/>B</button>
+            </td>
+            <td class="_color_1">
+                <button onclick="adicionarElemento('C')">6<br/>C </button>
+            </td>
+            <td class="_color_1 ">
+              <button onclick="adicionarElemento('N')"> 7<br />N </button> 
+            </td>
+            <td class="_color_1 text_color_green">
+               <button onclick="adicionarElemento('O')"> 8<br />O </button> 
+            </td>
+            <td class="color_8 ">
+               <button onclick="adicionarElemento('F')"> 9<br />F </button> 
+            </td>
+            <td class="color_9 ">
+                <button onclick="adicionarElemento('Ne')">10<br />Ne </button> 
+            </td>
+        </tr>
+             <tr>
+            <td class="color_2">
+                <button onclick="adicionarElemento('Na')">11<br/>Na </button>
+            </td>
+            <td class="color_3">
+                <button onclick="adicionarElemento('Mg')">12<br/>Mg </button>
+            </td>
+            <td class="noBorder" colspan="10"></td>
+            <td class="color_7">
+                <button onclick="adicionarElemento('Al')">13<br/>Al </button>
+            </td>
+            <td class="color_6">
+                <button onclick="adicionarElemento('Si')">14<br/>Si </button>
+            </td>
+            <td class="_color_1 text_color_green">
+                <button onclick="adicionarElemento('P')"> 15<br />P </button>
+            </td>
+            <td class="_color_1">
+                <button onclick="adicionarElemento('S')">16<br/>S </button>
+            </td>
+            <td class="color_8 ">
+                <button onclick="adicionarElemento('Cl')"> 17<br/>Cl </button>
+            </td>
+            <td class="color_9 ">
+                <button onclick="adicionarElemento('Ar')"> 18<br/>Ar </button>
+            </td>
+        </tr>
+         <tr>
+            <td class="color_2">
+               <button onclick="adicionarElemento('K')">19<br />K </button> 
+            </td>
+            <td class="color_3">
+               <button onclick="adicionarElemento('Ca')">20<br />Ca </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Sc')">21<br />Sc </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Ti')">22<br />Ti </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('V')">23<br />V </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Cr')">24<br />Cr </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Mn')">25<br />Mn </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Fe')">26<br />Fe </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Co')">27<br />Co </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Ni')"> 28<br />Ni </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Cu')">  29<br />Cu </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Zn')"> 30<br />Zn </button> 
+            </td>
+            <td class="color_7 text_color_blue">
+                <button onclick="adicionarElemento('Ga')"> 31<br />Ga </button> 
+            </td>
+            <td class="color_6">
+                <button onclick="adicionarElemento('Ge')"> 32<br />Ge </button> 
+            </td>
+            <td class="color_6">
+                <button onclick="adicionarElemento('As')"> 33<br />As </button> 
+            </td>
+            <td class="_color_1">
+                <button onclick="adicionarElemento('Se')">  34<br />Se </button> 
+            </td>
+            <td class="color_8 text_color_blue">
+                <button onclick="adicionarElemento('Br')">  35<br />Br </button> 
+            </td>
+            <td class="color_9 ">
+                <button onclick="adicionarElemento('Kr')"> 36<br />Kr </button> 
+            </td>
+        </tr>
+        <tr>
+            <td class="color_2">
+              <button onclick="adicionarElemento('Rb')">37<br/>Rb </button>
+            </td>
+            <td class="color_3">
+                <button onclick="adicionarElemento('Sr')">38<br/>Sr </button>
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Y')">39<br />Y </button>
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Zr')">40<br />Zr </button>
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Nb')">41<br />Nb </button>
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Mo')">42<br />Mo </button>
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Tc')">43<br />Tc </button>
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Ru')">44<br />Ru </button>
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Rh')">45<br />Rh </button>
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Pd')">46<br />Pd </button>
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Ag')">47<br />Ag </button>
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Cd')">48<br />Cd </button>
+            </td>
+            <td class="color_7">
+                <button onclick="adicionarElemento('In')">49<br />In </button>
+            </td>
+            <td class="color_7">
+                <button onclick="adicionarElemento('Sn')">50<br />Sn </button>
+            </td>
+            <td class="color_6">
+                <button onclick="adicionarElemento('Sb')">51<br />Sb </button>
+            </td>
+            <td class="color_6">
+                <button onclick="adicionarElemento('Te')">52<br />Te </button>
+            </td>
+            <td class="color_8">
+                <button onclick="adicionarElemento('I')">53<br />I </button>
+            </td>
+            <td class="color_9 ">
+                <button onclick="adicionarElemento('Xe')">54<br />Xe </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="color_2 text_color_blue">
+               <button onclick="adicionarElemento('Cs')">55<br/>Cs </button> 
+            </td>
+            <td class="color_3">
+                <button onclick="adicionarElemento('Ba')"> 56<br/>Ba </button> 
+            </td>
+            <td class="color_4">57-71<br/>&nbsp;</td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Hf')"> 72<br/>Hf </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Ta')"> 73<br/>Ta </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('W')"> 74<br/>W </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Re')"> 75<br/>Re </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Os')"> 76<br/>Os </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Ir')"> 77<br/>Ir </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Pt')"> 78<br/>Pt </button> 
+            </td>
+            <td class="color_5">
+                <button onclick="adicionarElemento('Au')"> 79<br/>Au </button> 
+            </td>
+            <td class="color_5 ">
+                <button onclick="adicionarElemento('Hg')"> 80<br/>Hg </button> 
+            </td>
+            <td class="color_7">
+                <button onclick="adicionarElemento('Tl')"> 81<br/>Tl </button> 
+            </td>
+            <td class="color_7">
+                <button onclick="adicionarElemento('Pb')"> 82<br/>Pb </button> 
+            </td>
+            <td class="color_7">
+                <button onclick="adicionarElemento('Bi')"> 83<br/>Bi </button> 
+            </td>
+            <td class="color_6">
+                <button onclick="adicionarElemento('Po')"> 84<br>Po </button> 
+            </td>
+            <td class="color_8">
+                <button onclick="adicionarElemento('At')"> 85<br/>At </button> 
+            </td>
+            <td class="color_9 ">
+                <button onclick="adicionarElemento('Rn')"> 86<br/>Rn </button> 
+            </td>
+        </tr>
+        <tr>
+            <td class="color_2 text_color_blue">
+               <button onclick="adicionarElemento('Fr')"> 87<br/>Fr </button>
+            </td>
+            <td class="color_3">
+                <button onclick="adicionarElemento('Ra')"> 88<br/>Ra </button>
+            </td>
+            <td class="color_4">89-103<br />&nbsp;</td>
+            <td class="color_5 text_color_red">
+                <button onclick="adicionarElemento('Rf')"> 104<br/>Rf </button>
+            </td>
+            <td class="color_5 text_color_red">
+                <button onclick="adicionarElemento('Db')"> 105<br/>Db </button>
+            </td>
+            <td class="color_5 text_color_red">
+                <button onclick="adicionarElemento('sg')"> 106<br/>Sg </button>
+            </td>
+            <td class="color_5 text_color_red">
+                <button onclick="adicionarElemento('Bh')"> 107<br/>Bh </button>
+            </td>
+            <td class="color_5 text_color_red">
+                <button onclick="adicionarElemento('Hs')"> 108<br/>Hs </button>
+            </td>
+            <td class="color_5 text_color_red">
+                <button onclick="adicionarElemento('Mt')"> 109<br/>Mt </button>
+            </td>
+            <td class="color_5 text_color_red">
+                <button onclick="adicionarElemento('Ds')"> 110<br/>Ds </button>
+            </td>
+            <td class="color_5 text_color_red">
+                <button onclick="adicionarElemento('Rg')"> 111<br/>Rg </button>
+            </td>
+            <td class="color_5 text_color_red">
+                <button onclick="adicionarElemento('Cn')"> 112<br/>Cn </button>
+            </td>
+            
+        </tr>
+        <tr>
+            <td class="noBorder"></td>
+        </tr>
+        <tr>
+            <td class="noBorder" colspan="2" rowspan="2"></td>
+            <td class="color_4">
+               <button onclick="adicionarElemento('La')"> 57<br />La </button>
+            </td>
+            <td class="color_4">
+                <button onclick="adicionarElemento('Ce')"> 58<br />Ce </button>
+            </td>
+            <td class="color_4">
+                <button onclick="adicionarElemento('Pr')">  59<br />Pr </button>
+            </td>
+            <td class="color_4">
+                <button onclick="adicionarElemento('Nd')"> 60<br />Nd</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button onclick="adicionarElemento('Pm')"> 61<br />Pm</button>
+            </td>
+            <td class="color_4">
+                <button onclick="adicionarElemento('Sm')"> 62<br />Sm</button>
+            </td>
+            <td class="color_4">
+                <button onclick="adicionarElemento('Eu')"> 63<br />Eu</button>
+            </td>
+            <td class="color_4">
+                <button onclick="adicionarElemento('Gd')"> 64<br/>Gd</button>
+            </td>
+            <td class="color_4">
+                <button onclick="adicionarElemento('Tb')"> 65<br>Tb</button>
+            </td>
+            <td class="color_4">
+                <button onclick="adicionarElemento('Dy')">  66<br/>Dy</button>
+            </td>
+            <td class="color_4">
+                <button onclick="adicionarElemento('Ho')"> 67<br/>Ho</button>
+            </td>
+            <td class="color_4">
+                <button onclick="adicionarElemento('Er')"> 68<br/>Er</button>
+            </td>
+            <td class="color_4">
+                <button onclick="adicionarElemento('Tm')"> 69<br />Tm </button>
+            </td>
+            <td class="color_4">
+                <button onclick="adicionarElemento('Yb')">  70<br />Yb </button>
+            </td>
+            <td class="color_4">
+                <button onclick="adicionarElemento('Lu')"> 71<br />Lu </button>
+            </td>
+            <td class="noBorder" colspan="1" rowspan="1"></td>
+        </tr>
+        <tr>
+            <td class="color_4">
+               <button onclick="adicionarElemento('Ac')"><br>Ac</button>
+            </td>
+            <td class="color_4">
+                <button onclick="adicionarElemento('Th')">90<br>Th</button>
+            </td>
+            <td class="color_4">
+                <button onclick="adicionarElemento('Pa')">91<br>Pa</button>
+            </td>
+            <td class="color_4">
+                <button onclick="adicionarElemento('U')">92<br>U</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button onclick="adicionarElemento('Np')">93<br>Np</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button onclick="adicionarElemento('Pu')">94<br>Pu</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button onclick="adicionarElemento('Am')">95<br>Am</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button onclick="adicionarElemento('Cm')">96<br>Cm</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button onclick="adicionarElemento('Bk')">97<br>Bk</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button onclick="adicionarElemento('Cf')">98<br>Cf</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button onclick="adicionarElemento('Es')">99<br>Es</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button onclick="adicionarElemento('Fm')">100<br>Fm</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button onclick="adicionarElemento('Md')">101<br>Md</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button onclick="adicionarElemento('No')">102<br>No</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button onclick="adicionarElemento('Lr')">103<br>Lr</button>
+            </td>
+    </table>
+</center>
+
+    <script>
+        var campoAtivo = null;
+
+        function adicionarElemento(elemento) {
+            var barras = document.getElementsByClassName('barra');
+            for (var i = 0; i < barras.length; i++) {
+                if (barras[i] === campoAtivo) {
+                    barras[i].value += elemento;
+                }
+            }
+        }
+
+        var barras = document.getElementsByClassName('barra');
+        for (var i = 0; i < barras.length; i++) {
+            barras[i].addEventListener('focus', function () {
+                campoAtivo = this;
+            });
+        }
+    </script>
+
 </body>
 </html>
