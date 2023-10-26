@@ -1,0 +1,124 @@
+conn = sqlite3.connect('tabela_periodica.db')
+cursor = conn.cursor()
+
+# Crie a tabela propriedades_eletromagneticas
+cursor.execute('''
+    CREATE TABLE propriedades_eletromagneticas (
+        id_propriedades_eletromagneticas INTEGER PRIMARY KEY AUTOINCREMENT,
+        condutividade_eletromagnetica VARCHAR(50),
+        tipo_eletrico VARCHAR(50),
+        tipo_magnetico VARCHAR(50),
+        sensibilidade_magnetica_volume VARCHAR(50),
+        sensibilidade_magnetica_massa VARCHAR(50),
+        sensibilidade_magnetica_molaridade VARCHAR(50),
+        resistividade VARCHAR(50),
+        ponto_superconducao VARCHAR(50)
+    )
+''')
+
+# Crie a tabela reatividade
+cursor.execute('''
+    CREATE TABLE reatividade (
+        id_reatividade INTEGER PRIMARY KEY AUTOINCREMENT,
+        eletronegatividade VARCHAR(50),
+        camada_valencia VARCHAR(50),
+        afinidade_eletrons VARCHAR(50)
+    )
+''')
+
+# Crie a tabela propriedades_atomicas
+cursor.execute('''
+    CREATE TABLE propriedades_atomicas (
+        id_propriedades_atomicas INTEGER PRIMARY KEY AUTOINCREMENT,
+        configuraçoes_eletrons VARCHAR(50),
+        estados_oxidaçao VARCHAR(50),
+        carga_ions VARCHAR(50),
+        potencial_ionizacao_atomo VARCHAR(50),
+        raio_atomico_pm VARCHAR(50),
+        raio_covalente_pm VARCHAR(50),
+        raio_vanderwaals_pm VARCHAR(50)
+    )
+''')
+
+# Crie a tabela propriedades
+cursor.execute('''
+    CREATE TABLE propriedades (
+        id_propriedades INTEGER PRIMARY KEY AUTOINCREMENT,
+        numero_atomico VARCHAR(50),
+        massa_atomica VARCHAR(50),
+        densidade VARCHAR(50),
+        ponto_fusao VARCHAR(50),
+        ponto_ebulicao VARCHAR(50),
+        camada_valencia VARCHAR(50),
+        periodo VARCHAR(50),
+        grupo VARCHAR(50),
+        lugar_tabela VARCHAR(50),
+        expectro_emissao VARCHAR(50)
+    )
+''')
+
+# Crie a tabela geral
+cursor.execute('''
+    CREATE TABLE geral (
+        id_geral INTEGER PRIMARY KEY AUTOINCREMENT,
+        nome VARCHAR(50),
+        nome_latim VARCHAR(50),
+        ano_descobrimento VARCHAR(50),
+        cas VARCHAR(50),
+        decoberto_por VARCHAR(50),
+        custo_100_gramas VARCHAR(50),
+        camada_eletron VARCHAR(50),
+        qtd_protons VARCHAR(50),
+        qtd_neutrons VARCHAR(50),
+        qtd_eletrons VARCHAR(50)
+    )
+''')
+
+# Crie a tabela tabela_periodica com chaves estrangeiras
+cursor.execute('''
+    CREATE TABLE tabela_periodica (
+        id_elemento INTEGER PRIMARY KEY AUTOINCREMENT,
+        id_geral INTEGER,
+        id_propriedades INTEGER,
+        id_propriedades_atomicas INTEGER,
+        id_reatividade INTEGER,
+        id_propriedades_eletromagneticas INTEGER,
+        FOREIGN KEY (id_geral) REFERENCES geral(id_geral),
+        FOREIGN KEY (id_propriedades) REFERENCES propriedades(id_propriedades),
+        FOREIGN KEY (id_propriedades_atomicas) REFERENCES propriedades_atomicas(id_propriedades_atomicas),
+        FOREIGN KEY (id_reatividade) REFERENCES reatividade(id_reatividade),
+        FOREIGN KEY (id_propriedades_eletromagneticas) REFERENCES propriedades_eletromagneticas(id_propriedades_eletromagneticas)
+    )
+''')
+
+conn.commit()
+conn.close()
+
+
+
+
+
+
+def conectar_bd():
+    conn = sqlite3.connect('tabela_periodica.db')
+    return conn
+
+@app.route('/id_elemento', methods=['GET','POST'])
+def id_elemento():
+    conn = sqlite3.connect('tabela_periodica.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM tabela_periodica')
+    elementos = cursor.fetchall()
+    conn.close()
+    elementos_list = []
+    for id_elemento in elementos:
+        elementos_list.append({
+            'atomic_number': id_elemento[0],
+            'symbol': id_elemento[1],
+            'name': id_elemento[2],
+            'atomic_weight': id_elemento[3]
+        })
+    return jsonify(elementos_list)
+
+if __name__ == "__main__":
+    app.run(debug=True)
