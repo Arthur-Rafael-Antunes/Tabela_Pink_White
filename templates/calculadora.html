@@ -112,6 +112,7 @@
         button{
             border:transparent;
             background-color:transparent;
+            width:50px;
         }
     </style>
 </head>
@@ -119,13 +120,19 @@
     <center>
     <h1 class="headingOne">Calculadora Inteligente </h1>
         <form method="POST">
-            <input type="text" name="numero1"  class="barra" placeholder="Reagentes">
-            <br> <br>
-            <input type="text" name="numero2"  class="barra" placeholder="Produtos">
-            <br> <br>
-            <select name="operacao">
-                <option value="soma">Balanciamento</option>
-                <option value="subtracao">Subtração</option>
+            <div id="modoLigacaoQuimica" style="display: none;">
+                <input type="text" name="ligacaoQuimica" class="barra" placeholder="Ligação Química">
+                <br> <br>
+            </div>
+            <div id="modoOutros">
+                <input type="text" name="numero1"  class="barra" placeholder="Reagentes">
+                <br> <br>
+                <input type="text" name="numero2"  class="barra" placeholder="Produtos">
+                <br> <br>
+            </div>
+            <select name="operacao" id="modoCalculo">
+                <option value="balanciamento">Balanciamento</option>
+                <option value="ligacao">Ligação Química</option>
                 <option value="multiplicacao">Multiplicação</option>
                 <option value="divisao">Divisão</option>
             </select>
@@ -504,6 +511,22 @@
 </center>
 
     <script>
+        var modoCalculo = document.getElementById('modoCalculo');
+        var modoLigacaoQuimica = document.getElementById('modoLigacaoQuimica');
+        var modoOutros = document.getElementById('modoOutros');
+
+        modoCalculo.addEventListener('change', function() {
+            var modoSelecionado = modoCalculo.options[modoCalculo.selectedIndex].value;
+
+            // Ocultar ou mostrar os campos de entrada com base na opção selecionada
+            if (modoSelecionado === "ligacao") {
+                modoLigacaoQuimica.style.display = "block";
+                modoOutros.style.display = "none";
+            } else {
+                modoLigacaoQuimica.style.display = "none";
+                modoOutros.style.display = "block";
+            }
+        });
         var campoAtivo = null;
 
         function adicionarElemento(elemento) {
@@ -522,6 +545,6 @@
             });
         }
     </script>
-
+    
 </body>
 </html>
