@@ -14,7 +14,7 @@
             background-repeat: no-repeat;
             transition: background-image 0.5s;
         }
-
+        
         .green-mode {
             background-image: url("/static/images/fundo_rosa.jpg");
         }
@@ -30,12 +30,29 @@
         .orange-mode {
             background-image: url("/static/images/fundo_laranja.jpg");
         }
-
+		
         #theme-toggle {
             position: absolute;
             top: 20px;
             right: 20px;
             cursor: pointer;
+        }
+
+        .header{
+            display: flex;
+            align-items: center;
+        }
+
+        .title{
+            font-size: 5vw;
+        }
+
+        .buttons {
+            margin-left: 20px;
+        }
+
+        .button{
+            margin-right: 20px;
         }
 
         * {
@@ -117,13 +134,23 @@
         {
             font-size: 1px;
         }
+
+        
     </style>
 </head>
 
 <body class="purple-mode">
-    <center>
-        <h1 class="headingOne">The Periodic table<TABLE></TABLE></h1></center>
+        <div class="header">
+        <h1 class="title">The Periodic table</h1>
+        <div class="buttons">
+            <button class="button">Tabela</button>
+            <button class="button">Calculadora</button>
+            <button class="button">Modos</button>
+            <button class="button">Pesquisa</button>
+        </div>
         <img src="botao.png" width="" height="" id=theme-toggle>
+    </div>
+
         <center>
         <table>
             <tr>
@@ -275,9 +302,12 @@
                 <td class="color_4">101<br>Md<br><h6>Mendelévio</h6></td>
                 <td class="color_4">102<br>No<br><h6>Nobélio</h6></td>
                 <td class="color_4">103<br>Lr<br><h6>Laurêncio</h6></td>
+                
         </table>
     </center>
-
+    <a href="/calculador">
+        teste
+    </a>
     <script>
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
@@ -294,6 +324,13 @@
         });
         </script>
     </tr>
+    {% for elemento in elementos %}
+    <tr>
+        <td>{{ elemento.elemento_geral.nome }}</td>
+        <td>{{ elemento.elemento_propriedades.numero_atomico }}</td>
+        <!-- Adicione mais colunas conforme necessário -->
+    </tr>
+    {% endfor %}
     </table>
     </center>
     </body>
