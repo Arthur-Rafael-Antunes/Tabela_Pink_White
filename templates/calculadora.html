@@ -114,11 +114,84 @@
             background-color:transparent;
             width:50px;
         }
+        .buttons {
+            margin-left: 20px;
+        }
+        .button1{
+            margin-right: 20px;
+            border: 10px;
+            background-color: gray;
+        }
+        .header{
+            display: flex;
+            align-items: center;
+        }
+        .title{
+            font-size: 5vw;
+        }
+        .font
+        {
+            font-size: 1px;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 70%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="purple-mode">
     <center>
-    <h1 class="headingOne">Calculadora Inteligente </h1>
+        <div class="header">
+            <h1 class="title">Calculadora Inteligente</h1>
+            <div class="buttons">
+                <button class="button1">
+                    <a href ="/">
+                        Tabela
+                    </a>
+                </button>
+                <button class="button1"> 
+                    <a href="">
+                        Calculadora
+                    </a>
+                </button>
+                <button class="button1">Modos</button>
+                <button class="button1">Pesquisa</button>
+            </div>
+        </div>
+        <button id="infoButton">(INFO)</button>
+
+        <div id="infoPopup" class="popup">
+            <div class="popup-content">
+                <span class="close" id="closeButton">&times;</span>
+                <h2>Calculadora Inteligente</h2>
+                <p>Esta calculadora pode ser usada para realizar o balanceamento de equações químicas. Basta inserir as fórmulas dos reagentes e produtos e escolher a operação de 'Balanciamento'.</p>
+                <!-- Adicione mais informações aqui -->
+            </div>
+        </div>
         <form method="POST">
             <div id="modoLigacaoQuimica" style="display: none;">
                 <input type="text" name="ligacaoQuimica" class="barra" placeholder="Ligação Química">
@@ -131,14 +204,20 @@
                 <br> <br>
             </div>
             <select name="operacao" id="modoCalculo">
-                <option value="balanciamento">Balanciamento</option>
+                <option value="balanciamento"> Balanciamento</option>
                 <option value="ligacao">Ligação Química</option>
                 <option value="multiplicacao">Multiplicação</option>
                 <option value="divisao">Divisão</option>
             </select>
             <input type="submit" value="Calcular">
         </form>
-    <h2>Resultado: {{ resultado }}</h2>
+    <h2>Resultado:</h2>
+    {% if mensagem_erro %}
+    <div style="color: red;">Erro: {{ mensagem_erro }}</div>
+    {% elif resultado %}
+        {{ resultado }}
+    {% endif %}
+    
     <br><br>
     <table>
         <tr>
@@ -544,6 +623,24 @@
                 campoAtivo = this;
             });
         }
+
+        var infoButton = document.getElementById('infoButton');
+        var infoPopup = document.getElementById('infoPopup');
+        var closeButton = document.getElementById('closeButton');
+
+        infoButton.addEventListener('click', function() {
+            infoPopup.style.display = 'block';
+        });
+
+        closeButton.addEventListener('click', function() {
+            infoPopup.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == infoPopup) {
+                infoPopup.style.display = 'none';
+            }
+        });
     </script>
     
 </body>
