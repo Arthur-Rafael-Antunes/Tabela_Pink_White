@@ -188,7 +188,7 @@ def calculator():
         products = request.form['numero2']
         operacao = request.form['operacao']
 
-        if operacao == 'soma':
+        if operacao == 'balanciamento':
            resultado = balanciamento(reactants, products)
 
         elif operacao == 'subtracao':
