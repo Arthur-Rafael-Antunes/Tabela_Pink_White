@@ -8,41 +8,50 @@
     <html lang="en">
         <style>
             body {
-                margin: 0;
-                padding: 0;
                 background-size: cover; 
                 background-image: url("/static/images/fundo_verde.jpg");
     
             }
-    
-            #theme-toggle {
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                cursor: pointer;
-            }
-    
             .header{
+                padding: 2rem;
+            }
+            .header-content {
                 display: flex;
+                justify-content: space-between;
                 align-items: center;
+                text-align: center; /* Centraliza o texto */
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
             }
     
-            .title{
+            .title {
                 font-size: 5vw;
+                margin: 0 2rem;
             }
     
             .buttons {
-                margin-left: 20px;
+                height: 3vw;
+                display: flex;
+                gap: 5rem;
             }
     
             .button{
-                margin-right: 20px;
+                margin: right 0;;
+                background-color: #3b82f6;
+                color: white;
+                padding: 0.5rem 1rem;
+                text-decoration: none;
+                border-radius: 0.25rem;
             }
     
             * {
                 margin: 0;
                 font-family: Arial, Helvetica, sans-serif;
                 font-weight: 600;
+                box-sizing: border-box;
             }
     
             td {
@@ -109,11 +118,6 @@
             {
                 border: 0px;
             }
-            img{
-                width: 100px;
-                height: auto;
-                padding: 525px 0px 0px 0px;
-            }
             .font
             {
                 font-size: 1px;
@@ -124,24 +128,29 @@
     </head>
     
     <body>
-            <div class="header">
-            <h1 class="title">Tabela</h1>
-            <div class="buttons">
-                <button class="button">Tabela</button>
-                <button class="button"> 
-                    <a href="/calculadora">
-                        Calculadora
-                    </a>
-                </button>
-                <button class="button">
-                    <a href="/pesquisa">
-                        Pesquisa
-                    </a></button>
-    
-                <button class="button">Donwload</button>
+        <div class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="buttons">
+                        <button class="button">Tabela</button>
+                        <button class="button"> 
+                            <a href="/calculadora">
+                                Calculadora
+                            </a>
+                        </button>
+                        <h1 class="title">Tabela</h1>
+                        <button class="button">
+                            <a href="/pesquisa">
+                                Pesquisa
+                            </a></button>
+                        <button class="button">Donwload</button>
+                        </div>
+                    
+                </div>
+                
             </div>
         </div>
-    
+        <hr width="100%">
             <center>
             <table>
                 <tr>
@@ -151,7 +160,7 @@
                 </tr>
                 <tr border="on">
                     <td class="color_2">3<br>Li<br><h6>Lítio</h6></td>
-                    <td class="co'lor_3">4<br>Be<br><h6>Berílio</h6></td>
+                    <td class="color_3">4<br>Be<br><h6>Berílio</h6></td>
     
                     <td class="noBorder" colspan="10"></td>
     
