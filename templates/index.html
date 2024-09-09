@@ -8,43 +8,62 @@
     <html lang="en">
         <style>
             body {
-                background-size: cover; 
-                background-image: url("/static/images/fundo_verde.jpg");
-    
+                margin: 0;
+                padding: 0;
             }
-            .header{
-                padding: 2rem;
+            .header {
+                background-color: #006400;
+                padding: 10px 0;
+                position: relative;
             }
-            .header-content {
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                text-align: center; /* Centraliza o texto */
+            }
+            .title {
+                font-size: 4rem;
+                font-weight: bold;
+                color: white;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                margin: 0;
+                z-index: 1;
             }
 
             .container {
                 max-width: 1200px;
                 margin: 0 auto;
             }
-    
-            .title {
-                font-size: 5vw;
-                margin: 0 2rem;
-            }
+
     
             .buttons {
-                height: 3vw;
                 display: flex;
-                gap: 5rem;
+                gap: 50px;
             }
     
-            .button{
-                margin: right 0;;
-                background-color: #3b82f6;
-                color: white;
-                padding: 0.5rem 1rem;
-                text-decoration: none;
-                border-radius: 0.25rem;
+            .button {
+            background-color: #4169E1;
+            color: white;
+            padding: 5px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+          
+            }
+            .button:hover {
+                background-color: #1E90FF;
+            }
+            .left-buttons, .right-buttons {
+                width: 40%;
+                display: flex;
+                justify-content: flex-start;
+            }
+            .right-buttons {
+                justify-content: flex-end;
             }
     
             * {
@@ -128,28 +147,19 @@
     </head>
     
     <body>
-        <div class="header">
+        <header class="header">
             <div class="container">
-                <div class="header-content">
-                    <div class="buttons">
-                        <button class="button">Tabela</button>
-                        <button class="button"> 
-                            <a href="/calculadora">
-                                Calculadora
-                            </a>
-                        </button>
-                        <h1 class="title">Tabela</h1>
-                        <button class="button">
-                            <a href="/pesquisa">
-                                Pesquisa
-                            </a></button>
-                        <button class="button">Donwload</button>
-                        </div>
-                    
+                <div class="left-buttons buttons">
+                    <a href="/" class="button">Tabela</a>
+                    <a href="/calculadora" class="button">Calculadora</a>
                 </div>
-                
+                <h1 class="title">Tabela</h1>
+                <div class="right-buttons buttons">
+                    <a href="/pesquisa" class="button">Pesquisa</a>
+                    <a href="#" class="button">Download</a>
+                </div>
             </div>
-        </div>
+        </header>
         <hr width="100%">
             <center>
             <table>
