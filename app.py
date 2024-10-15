@@ -9,14 +9,15 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    return render_template('index.html')
+
+@app.route('/tabela')
+def tabela():
     return render_template('tabela.html')
-
-
 
 def balanciamento(reactants, products):
     elementList=[]
     elementMatrix=[]
-    
     reactants=reactants.replace(' ', '').split("+")
     products=products.replace(' ', '').split("+")
     def addToMatrix(element, index, count, side):
