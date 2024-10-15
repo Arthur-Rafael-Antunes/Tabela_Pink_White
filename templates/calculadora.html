@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-    <!DOCTYPE html>
-    <html lang="en">
-        <style>
+    <title>Calculadora</title>
+    <style>
             body {
                 margin: 0;
                 padding: 0;
@@ -33,289 +30,584 @@
                 margin: 0;
                 z-index: 1;
             }
+        
+         * {
+             margin: 0;
+             font-family: Arial, Helvetica, sans-serif;
+             font-weight: 600;
+         }
 
-            .container {
-                max-width: 1200px;
-                margin: 0 auto;
-            }
+         td {
+             width: 4vw;
+             border: 1px solid black; /* Corrija o estilo da borda */
+             text-align: center;
+         }
 
-    
-            .buttons {
-                display: flex;
-                gap: 50px;
-            }
-    
-            .button {
+         .headingOne {
+             background-color: rgb(255, 255, 255);
+             padding: 5px;
+             font-size: 5vw;
+         }
+
+         ._color_1 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #e6b629;
+         }
+
+         .color_2 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #2b6464;
+         }
+
+         .color_3 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #90c7ff;
+         }
+
+         .color_4 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #fceff0;
+         }
+
+         .color_5 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #fff28e;
+         }
+
+         .color_6 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #c79810;
+         }
+
+         .color_7 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #cdeb8b;
+         }
+
+         .color_8 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #ebdca9;
+         }
+
+         .color_9 {
+             border: 1px solid black; /* Corrija o estilo da borda */
+             background-color: #e6e6fa;
+         }
+
+         .text_color_green {
+             color: green;
+         }
+         .noBorder
+         {
+             border: 0px;
+         }
+         img{
+             width: 100px;
+             height: auto;
+             padding: 525px 0px 0px 0px;
+         }
+         .buttons {
+            display: flex;
+            gap: 50px;
+        }
+        .button {
             background-color: #4169E1;
             color: white;
             padding: 5px 15px;
             text-decoration: none;
             border-radius: 5px;
             font-size: 0.9rem;
-          
-            }
-            .button:hover {
-                background-color: #1E90FF;
-            }
-            .left-buttons, .right-buttons {
-                width: 40%;
-                display: flex;
-                justify-content: flex-start;
-            }
-            .right-buttons {
-                justify-content: flex-end;
-            }
-    
-            * {
-                margin: 0;
-                font-family: Arial, Helvetica, sans-serif;
-                font-weight: 600;
-                box-sizing: border-box;
-            }
-    
-            td {
-                width: 4vw;
-                border: 1px solid black; /* Corrija o estilo da borda */
-                text-align: center;
-            }
-    
-            .headingOne {
-                background-color: rgb(255, 255, 255);
-                margin: 0;
-                font-size: 5vw;
-            }
-    
-            ._color_1 {
-                border: 1px solid black; /* Corrija o estilo da borda */
-                background-color: #e6b629;
-            }
-    
-            .color_2 {
-                border: 1px solid black; /* Corrija o estilo da borda */
-                background-color: #2b6464;
-            }
-    
-            .color_3 {
-                border: 1px solid black; /* Corrija o estilo da borda */
-                background-color: #90c7ff;
-            }
-    
-            .color_4 {
-                border: 1px solid black; /* Corrija o estilo da borda */
-                background-color: #fceff0;
-            }
-    
-            .color_5 {
-                border: 1px solid black; /* Corrija o estilo da borda */
-                background-color: #fff28e;
-            }
-    
-            .color_6 {
-                border: 1px solid black; /* Corrija o estilo da borda */
-                background-color: #c79810;
-            }
-    
-            .color_7 {
-                border: 1px solid black; /* Corrija o estilo da borda */
-                background-color: #cdeb8b;
-            }
-    
-            .color_8 {
-                border: 1px solid black; /* Corrija o estilo da borda */
-                background-color: #ebdca9;
-            }
-    
-            .color_9 {
-                border: 1px solid black; /* Corrija o estilo da borda */
-                background-color: #e6e6fa;
-            }
-    
-            .text_color_green {
-                color: green;
-            }
-            .noBorder
-            {
-                border: 0px;
-            }
-            .font
-            {
-                font-size: 1px;
-            }
-    
+        }
+        .button:hover {
+            background-color: #1E90FF;
+        }
+        .left-buttons, .right-buttons {
+            width: 40%;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .right-buttons {
+            justify-content: flex-end;
+        }
             
-        </style>
-    </head>
-    
-    <body>
-        <header class="header">
-            <div class="container">
-                <div class="left-buttons buttons">
-                    <a href="/" class="button">Tabela</a>
-                    <a href="/calculadora" class="button">Calculadora</a>
-                </div>
-                <h1 class="title">Tabela</h1>
-                <div class="right-buttons buttons">
-                    <a href="/pesquisa" class="button">Pesquisa</a>
-                    <a href="#" class="button">Download</a>
-                </div>
+         .button1{
+             border: black;
+             color: black;
+             background-color:transparent;
+             width:50px;
+         }
+         
+         .font
+         {
+             font-size: 1px;
+         }
+         .popup {
+             display: none;
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background-color: rgba(0, 0, 0, 0.7);
+         }
+
+         .popup-content {
+             background-color: #fefefe;
+             margin: 15% auto;
+             padding: 20px;
+             border: 1px solid #888;
+             width: 70%;
+             max-width: 400px;
+             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+             position: relative;
+         }
+
+         .close {
+             color: #aaa;
+             float: right;
+             font-size: 28px;
+             font-weight: bold;
+             cursor: pointer;
+         }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="left-buttons buttons">
+                <a href="/tabela" class="button">Tabela</a>
+                <a href="/calculadora" class="button">Calculadora</a>
             </div>
-        </header>
-        <hr width="100%">
-            <center>
-            <table>
-                <tr>
-                    <td class="_color_1 text_color_green">1<br>H<br><h6>Hidrogenio</h6></td>
-                    <td class="noBorder" colspan="16"></td>
-                    <td class="color_9 ">2<br>He<br><h6>Hélio</h6></td>
-                </tr>
-                <tr border="on">
-                    <td class="color_2">3<br>Li<br><h6>Lítio</h6></td>
-                    <td class="color_3">4<br>Be<br><h6>Berílio</h6></td>
-    
-                    <td class="noBorder" colspan="10"></td>
-    
-                    <td class="color_6">5<br>B<br><h6>Boro<h6></td>
-                    <td class="_color_1">6<br>C<br><h6>Carbono</h6></td>
-                    <td class="_color_1 ">7<br>N<br><h6>Nitrogénio</h6></td>
-                    <td class="_color_1 text_color_green">8<br>O<br><h6>Oxigénio</h6></td>
-                    <td class="color_8 ">9<br>F<br><h6>Flúor</h6></td>
-                    <td class="color_9 ">10<br>Ne<br><h6>Néon</h6></td>
-                </tr>
-                     <tr>
-                    <td class="color_2">11<br>Na<br><h6>Sódio</h6></td>
-                    <td class="color_3">12<br>Mg<br><h6>Magnésio</h6></td>
-                    <td class="noBorder" colspan="10"></td>
-                    <td class="color_7">13<br>Al<br><h6>Alumínio</h6></td>
-                    <td class="color_6">14<br>Si<br><h6>Silício</h6></td>
-                    <td class="_color_1 text_color_green">15<br>P<br><h6>Fósforo</h6></td>
-                    <td class="_color_1">16<br>S<br><h6>Enxofre</h6></td>
-                    <td class="color_8 ">17<br>Cl<br><h6>Cloro</h6></td>
-                    <td class="color_9 ">18<br>Ar<br><h6>Árgon</h6></td>
-                </tr>
-                 <tr>
-                    <td class="color_2">19<br>K<br><h6>Potássio</h6></td>
-                    <td class="color_3">20<br>Ca<br><h6>Cálcio</h6></td>
-                    <td class="color_5">21<br>Sc<br><h6>Escândio</h6></td>
-                    <td class="color_5">22<br>Ti<br><h6>Titânio</h6></td>
-                    <td class="color_5">23<br>V<br><h6>Vanádio</h6></td>
-                    <td class="color_5">24<br>Cr<br><h6>Crômio</h6></td>
-                    <td class="color_5">25<br>Mn<br><h6>Manganês</h6></td>
-                    <td class="color_5">26<br>Fe<br><h6>Ferro</h6></td>
-                    <td class="color_5">27<br>Co<br><h6>Cobalto</h6></td>
-                    <td class="color_5">28<br>Ni<br><h6>Níquel</h6></td>
-                    <td class="color_5">29<br>Cu<br><h6>Cobre</h6></td>
-                    <td class="color_5">30<br>Zn<br><h6>Zinco</h6></td>
-                    <td class="color_7">31<br>Ga<br><h6>Gálio<h6></td>
-                    <td class="color_6">32<br>Ge<br><h6>Germânio</h6></td>
-                    <td class="color_6">33<br>As<br><h6>Arsênio</h6></td>
-                    <td class="_color_1">34<br>Se<br><h6>Selênio</h6></td>
-                    <td class="color_8">35<br>Br<br><h6>Bromo</h6></td>
-                    <td class="color_9 ">36<br>Kr<br><h6>Crípton</h6></td>
-                </tr>
-                <tr>
-                    <td class="color_2">37<br>Rb<br><h6>Rubídio</h6></td>
-                    <td class="color_3">38<br>Sr<br><h6>Estrôncio</h6></td>
-                    <td class="color_5">39<br>Y<br><h6>Ítrio</h6></td>
-                    <td class="color_5">40<br>Zr<br><h6>Zircônio</h6></td>
-                    <td class="color_5">41<br>Nb<br><h6>Nióbio</h6></td>
-                    <td class="color_5">42<br>Mo<br><h6>Molibdênio</h6></td>
-                    <td class="color_5">43<br>Tc<br><h6>Tecnécio</h6></td>
-                    <td class="color_5">44<br>Ru<br><h6>Rutênio</h6></td>
-                    <td class="color_5">45<br>Rh<br><h6>Ródio</h6></td>
-                    <td class="color_5">46<br>Pd<br><h6>Paládio</h6></td>
-                    <td class="color_5">47<br>Ag<br><h6>Prata</h6></td>
-                    <td class="color_5">48<br>Cd<br><h6>Cádmio</h6></td>
-                    <td class="color_7">49<br>In<br><h6>Índio</h6></td>
-                    <td class="color_7">50<br>Sn<br><h6>Estanho</h6></td>
-                    <td class="color_6">51<br>Sb<br><h6>Antimônio</h6></td>
-                    <td class="color_6">52<br>Te<br><h6>Telúrio</h6></td>
-                    <td class="color_8">53<br>I<br><h6>Iodo</h6></td>
-                    <td class="color_9 ">54<br>Xe<br><h6>Xenônio</h6></td>
-                </tr>
-                <tr>
-                    <td class="color_2">55<br>Cs<br><h6>Césio</h6></td>
-                    <td class="color_3">56<br>Ba<br><h6>Bário</h6></td>
-                    <td class="color_4">57-71<br>&nbsp;<br><h6>La-Lu</h6></td>
-                    <td class="color_5">72<br>Hf<br><h6>Háfnio</h6></td>
-                    <td class="color_5">73<br>Ta<br><h6>Tântalo</h6></td>
-                    <td class="color_5">74<br>W<br><h6>Tungstênio</h6></td>
-                    <td class="color_5">75<br>Re<br><h6>Rênio</h6></td>
-                    <td class="color_5">76<br>Os<br><h6>Ósmio</h6></td>
-                    <td class="color_5">77<br>Ir<br><h6>Irídio</h6></td>
-                    <td class="color_5">78<br>Pt<br><h6>Platina</h6></td>
-                    <td class="color_5">79<br>Au<br><h6>Ouro</h6></td>
-                    <td class="color_5">80<br>Hg<br><h6>Mercúrio</h6></td>
-                    <td class="color_7">81<br>Tl<br><h6>Tálio</h6></td>
-                    <td class="color_7">82<br>Pb<br><h6>Chumbo</h6></td>
-                    <td class="color_7">83<br>Bi<br><h6>Bismuto</h6></td>
-                    <td class="color_6">84<br>Po<br><h6>Polônio</h6></td>
-                    <td class="color_8">85<br>At<br><h6>Ástato</h6></td>
-                    <td class="color_9 ">86<br>Rn<br><h6>Rádon</h6></td>
-                </tr>
-                <tr>
-                    <td class="color_2">87<br>Fr<br><h6>Frâncio</h6></td>
-                    <td class="color_3">88<br>Ra<br><h6>Rádio</h6></td>
-                    <td class="color_4">89-103<br>&nbsp;</td>
-                    <td class="color_5">104<br>Rf<br><h6>Rutherfórdio</h6></td>
-                    <td class="color_5">105<br>Db<br><h6>Dúbnio</h6></td>
-                    <td class="color_5">106<br>Sg<br><h6>Seabórgio</h6></td>
-                    <td class="color_5">107<br>Bh<br><h6>Bóhrio</h6></td>
-                    <td class="color_5">108<br>Hs<br><h6>Hássio</h6></td>
-                    <td class="color_5">109<br>Mt<br><h6>Meitnério</h6></td>
-                    <td class="color_5">110<br>Ds<br><h6>Darmstádtio</h6></td>
-                    <td class="color_5">111<br>Rg<br><h6>Roentgênio</h6></td>
-                    <td class="color_5">112<br>Cn<br><h6>Copernício</h6></td>
-                    <td class="color_7">113<br>Nh<br><h6>Nihônio</h6></td>
-                    <td class="color_7">114<br>Fl<br><h6>Fleróvio</h6></td>
-                    <td class="color_7">115<br>Mc<br><h6>Moscóvio</h6></td>
-                    <td class="color_7">116<br>Lv<br><h6>Livermório</h6></td>
-                    <td class="color_8">117<br>Ts<br><h6>Tenessino</h6></td>
-                    <td class="color_9">118<br>Og<br><h6>Oganessônio</h6></td>
-                    
-                </tr>
-                <tr>
-                    <td class="noBorder"></td>
-                </tr>
-                <tr>
-                    <td class="noBorder" colspan="2" rowspan="2"></td>
-                    <td class="color_4">57<br>La<br><h6>Lantânio</h6></td>
-                    <td class="color_4">58<br>Ce<br><h6>Cério</h6></td>
-                    <td class="color_4">59<br>Pr<br><h6>Praseodímio</h6></td>
-                    <td class="color_4">60<br>Nd<br><h6>Neodímio</h6></td>
-                    <td class="color_4">61<br>Pm<br><h6>Promécio</h6></td>
-                    <td class="color_4">62<br>Sm<br><h6>Samário</h6></td>
-                    <td class="color_4">63<br>Eu<br><h6>Európio</h6></td>
-                    <td class="color_4">64<br>Gd<br><h6>Gadolínio</h6></td>
-                    <td class="color_4">65<br>Tb<br><h6>Térbio</h6></td>
-                    <td class="color_4">66<br>Dy<br><h6>Disprósio</h6></td>
-                    <td class="color_4">67<br>Ho<br><h6>Hólmio</h6></td>
-                    <td class="color_4">68<br>Er<br><h6>Érbio</h6></td>
-                    <td class="color_4">69<br>Tm<br><h6>Túlio</h6></td>
-                    <td class="color_4">70<br>Yb<br><h6>Itérbio</h6></td>
-                    <td class="color_4">71<br>Lu<br><h6>Lutécio</h6></td>
-                    <td class="noBorder" colspan="1" rowspan="1"></td>
-                </tr>
-                <br>
-                <tr>
-                    <td class="color_4">89<br>Ac<br><h6>Actínio</h6></td>
-                    <td class="color_4">90<br>Th<br><h6>Tório</h6></td>
-                    <td class="color_4">91<br>Pa<br><h6>Protactínio</h6></td>
-                    <td class="color_4">92<br>U<br><h6>Urânio</h6></td>
-                    <td class="color_4">93<br>Np<br><h6>Neptúnio</h6></td>
-                    <td class="color_4">94<br>Pu<br><h6>Plutónio</h6></td>
-                    <td class="color_4">95<br>Am<br><h6>Amerício</h6></td>
-                    <td class="color_4">96<br>Cm<br><h6>Cúrio</h6></td>
-                    <td class="color_4">97<br>Bk<br><h6>Berquélio</h6></td>
-                    <td class="color_4">98<br>Cf<br><h6>Califórnio</h6></td>
-                    <td class="color_4">99<br>Es<br><h6>Einstênio</h6></td>
-                    <td class="color_4">100<br>Fm<br><h6>Férmio</h6></td>
-                    <td class="color_4">101<br>Md<br><h6>Mendelévio</h6></td>
-                    <td class="color_4">102<br>No<br><h6>Nobélio</h6></td>
-                    <td class="color_4">103<br>Lr<br><h6>Laurêncio</h6></td>
-                    
-            </table>
-        </center>
-        </body>
-    
-    </html>
-    
+            <h1 class="title">Estequiometria</h1>
+            <div class="right-buttons buttons">
+                <a href="/pesquisa" class="button">Pesquisa</a>
+                <a href="#" class="button">Download</a>
+            </div>
+        </div>
+    </header>
+    <hr width="100%">
+    <center>
+        <form method="POST">
+            <input type="text" name="numero1"  class="barra" placeholder="Reagentes">
+            <br> <br>
+            <input type="text" name="numero2"  class="barra" placeholder="Produtos">
+            <br> <br>
+            <select name="operacao">
+                <option value="soma">Balanciamento</option>
+                <option value="subtracao">Subtração</option>
+                <option value="multiplicacao">Multiplicação</option>
+                <option value="divisao">Divisão</option>
+            </select>
+            <input type="submit" value="Calcular">
+        </form>
+    <h2>Resultado: {{ resultado }}</h2>
+    <br><br>
+    <table>
+        <tr>
+            <td class="_color_1 text_color_green">
+                <button class="button1" onclick="adicionarElemento('H')">1<br/>H</button>
+            </td>
+            <td class="noBorder" colspan="16"></td>
+            <td class="color_9 ">
+                <button class="button1" onclick="adicionarElemento('He')">2<br/>He</button>
+            </td>
+        </tr>
+        <tr border="on">
+            <td class="color_2">
+                <button class="button1" onclick="adicionarElemento('Li')">3<br/>Li</button>
+            </td>
+            <td class="color_3">
+                <button class="button1" onclick="adicionarElemento('Be')">4<br/>Be</button>
+            </td>
+
+            <td class="noBorder" colspan="10"></td>
+
+            <td class="color_6">
+              <button class="button1" onclick="adicionarElemento('B')"> 5<br/>B</button>
+            </td>
+            <td class="_color_1">
+                <button class="button1" onclick="adicionarElemento('C')">6<br/>C </button>
+            </td>
+            <td class="_color_1 ">
+              <button class="button1" onclick="adicionarElemento('N')"> 7<br />N </button>
+            </td>
+            <td class="_color_1 text_color_green">
+               <button class="button1" onclick="adicionarElemento('O')"> 8<br />O </button>
+            </td>
+            <td class="color_8 ">
+               <button class="button1" onclick="adicionarElemento('F')"> 9<br />F </button>
+            </td>
+            <td class="color_9 ">
+                <button class="button1" onclick="adicionarElemento('Ne')">10<br />Ne </button>
+            </td>
+        </tr>
+             <tr>
+            <td class="color_2">
+                <button class="button1" onclick="adicionarElemento('Na')">11<br/>Na </button>
+            </td>
+            <td class="color_3">
+                <button class="button1" onclick="adicionarElemento('Mg')">12<br/>Mg </button>
+            </td>
+            <td class="noBorder" colspan="10"></td>
+            <td class="color_7">
+                <button class="button1" onclick="adicionarElemento('Al')">13<br/>Al </button>
+            </td>
+            <td class="color_6">
+                <button class="button1" onclick="adicionarElemento('Si')">14<br/>Si </button>
+            </td>
+            <td class="_color_1 text_color_green">
+                <button class="button1" onclick="adicionarElemento('P')"> 15<br />P </button>
+            </td>
+            <td class="_color_1">
+                <button class="button1" onclick="adicionarElemento('S')">16<br/>S </button>
+            </td>
+            <td class="color_8 ">
+                <button class="button1" onclick="adicionarElemento('Cl')"> 17<br/>Cl </button>
+            </td>
+            <td class="color_9 ">
+                <button class="button1" onclick="adicionarElemento('Ar')"> 18<br/>Ar </button>
+            </td>
+        </tr>
+         <tr>
+            <td class="color_2">
+               <button class="button1" onclick="adicionarElemento('K')">19<br />K </button>
+            </td>
+            <td class="color_3">
+               <button class="button1" onclick="adicionarElemento('Ca')">20<br />Ca </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Sc')">21<br />Sc </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Ti')">22<br />Ti </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('V')">23<br />V </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Cr')">24<br />Cr </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Mn')">25<br />Mn </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Fe')">26<br />Fe </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Co')">27<br />Co </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Ni')"> 28<br />Ni </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Cu')">  29<br />Cu </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Zn')"> 30<br />Zn </button>
+            </td>
+            <td class="color_7 text_color_blue">
+                <button class="button1" onclick="adicionarElemento('Ga')"> 31<br />Ga </button>
+            </td>
+            <td class="color_6">
+                <button class="button1" onclick="adicionarElemento('Ge')"> 32<br />Ge </button>
+            </td>
+            <td class="color_6">
+                <button class="button1" onclick="adicionarElemento('As')"> 33<br />As </button>
+            </td>
+            <td class="_color_1">
+                <button class="button1" onclick="adicionarElemento('Se')">  34<br />Se </button>
+            </td>
+            <td class="color_8 text_color_blue">
+                <button class="button1" onclick="adicionarElemento('Br')">  35<br />Br </button>
+            </td>
+            <td class="color_9 ">
+                <button class="button1" onclick="adicionarElemento('Kr')"> 36<br />Kr </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="color_2">
+              <button class="button1" onclick="adicionarElemento('Rb')">37<br/>Rb </button>
+            </td>
+            <td class="color_3">
+                <button class="button1" onclick="adicionarElemento('Sr')">38<br/>Sr </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Y')">39<br />Y </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Zr')">40<br />Zr </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Nb')">41<br />Nb </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Mo')">42<br />Mo </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Tc')">43<br />Tc </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Ru')">44<br />Ru </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Rh')">45<br />Rh </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Pd')">46<br />Pd </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Ag')">47<br />Ag </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Cd')">48<br />Cd </button>
+            </td>
+            <td class="color_7">
+                <button class="button1" onclick="adicionarElemento('In')">49<br />In </button>
+            </td>
+            <td class="color_7">
+                <button class="button1" onclick="adicionarElemento('Sn')">50<br />Sn </button>
+            </td>
+            <td class="color_6">
+                <button class="button1" onclick="adicionarElemento('Sb')">51<br />Sb </button>
+            </td>
+            <td class="color_6">
+                <button class="button1" onclick="adicionarElemento('Te')">52<br />Te </button>
+            </td>
+            <td class="color_8">
+                <button class="button1" onclick="adicionarElemento('I')">53<br />I </button>
+            </td>
+            <td class="color_9 ">
+                <button class="button1" onclick="adicionarElemento('Xe')">54<br />Xe </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="color_2 text_color_blue">
+               <button class="button1" onclick="adicionarElemento('Cs')">55<br/>Cs </button>
+            </td>
+            <td class="color_3">
+                <button class="button1" onclick="adicionarElemento('Ba')"> 56<br/>Ba </button>
+            </td>
+            <td class="color_4">57-71<br/>&nbsp;</td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Hf')"> 72<br/>Hf </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Ta')"> 73<br/>Ta </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('W')"> 74<br/>W </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Re')"> 75<br/>Re </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Os')"> 76<br/>Os </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Ir')"> 77<br/>Ir </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Pt')"> 78<br/>Pt </button>
+            </td>
+            <td class="color_5">
+                <button class="button1" onclick="adicionarElemento('Au')"> 79<br/>Au </button>
+            </td>
+            <td class="color_5 ">
+                <button class="button1" onclick="adicionarElemento('Hg')"> 80<br/>Hg </button>
+            </td>
+            <td class="color_7">
+                <button class="button1" onclick="adicionarElemento('Tl')"> 81<br/>Tl </button>
+            </td>
+            <td class="color_7">
+                <button class="button1" onclick="adicionarElemento('Pb')"> 82<br/>Pb </button>
+            </td>
+            <td class="color_7">
+                <button class="button1" onclick="adicionarElemento('Bi')"> 83<br/>Bi </button>
+            </td>
+            <td class="color_6">
+                <button class="button1" onclick="adicionarElemento('Po')"> 84<br>Po </button>
+            </td>
+            <td class="color_8">
+                <button class="button1" onclick="adicionarElemento('At')"> 85<br/>At </button>
+            </td>
+            <td class="color_9 ">
+                <button class="button1" onclick="adicionarElemento('Rn')"> 86<br/>Rn </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="color_2 text_color_blue">
+               <button class="button1" onclick="adicionarElemento('Fr')"> 87<br/>Fr </button>
+            </td>
+            <td class="color_3">
+                <button class="button1" onclick="adicionarElemento('Ra')"> 88<br/>Ra </button>
+            </td>
+            <td class="color_4">89-103<br />&nbsp;</td>
+            <td class="color_5 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Rf')"> 104<br/>Rf </button>
+            </td>
+            <td class="color_5 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Db')"> 105<br/>Db </button>
+            </td>
+            <td class="color_5 text_color_red">
+                <button class="button1" onclick="adicionarElemento('sg')"> 106<br/>Sg </button>
+            </td>
+            <td class="color_5 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Bh')"> 107<br/>Bh </button>
+            </td>
+            <td class="color_5 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Hs')"> 108<br/>Hs </button>
+            </td>
+            <td class="color_5 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Mt')"> 109<br/>Mt </button>
+            </td>
+            <td class="color_5 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Ds')"> 110<br/>Ds </button>
+            </td>
+            <td class="color_5 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Rg')"> 111<br/>Rg </button>
+            </td>
+            <td class="color_5 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Cn')"> 112<br/>Cn </button>
+            </td>
+            <td class="color_7"><br>
+                <button class="button1" onclick="adicionarElemento('Nh')"> 113<br/>Nh </button>
+            </td>
+            <td class="color_7"><br>
+                <button class="button1" onclick="adicionarElemento('Fl')"> 114<br/>Fl </button>
+            </td>
+            <td class="color_7"><br>
+                <button class="button1" onclick="adicionarElemento('Mc')"> 115<br/>Mc </button>
+            </td>
+            <td class="color_7"><br>
+                <button class="button1" onclick="adicionarElemento('Lv')"> 116<br/>Lv </button>
+            </td>
+            <td class="color_8"><br>
+                <button class="button1" onclick="adicionarElemento('Ts')"> 117<br/>Ts </button>
+            </td>
+            <td class="color_9"><br>
+                <button class="button1" onclick="adicionarElemento('Og')"> 118<br/>Og </button>
+            </td>
+        </tr>
+        <tr>
+            <td class="noBorder"></td>
+        </tr>
+        <tr>
+            <td class="noBorder" colspan="2" rowspan="2"></td>
+            <td class="color_4">
+               <button class="button1" onclick="adicionarElemento('La')"> 57<br />La </button>
+            </td>
+            <td class="color_4">
+                <button class="button1" onclick="adicionarElemento('Ce')"> 58<br />Ce </button>
+            </td>
+            <td class="color_4">
+                <button class="button1" onclick="adicionarElemento('Pr')">  59<br />Pr </button>
+            </td>
+            <td class="color_4">
+                <button class="button1" onclick="adicionarElemento('Nd')"> 60<br />Nd</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Pm')"> 61<br />Pm</button>
+            </td>
+            <td class="color_4">
+                <button class="button1" onclick="adicionarElemento('Sm')"> 62<br />Sm</button>
+            </td>
+            <td class="color_4">
+                <button class="button1" onclick="adicionarElemento('Eu')"> 63<br />Eu</button>
+            </td>
+            <td class="color_4">
+                <button class="button1" onclick="adicionarElemento('Gd')"> 64<br/>Gd</button>
+            </td>
+            <td class="color_4">
+                <button class="button1" onclick="adicionarElemento('Tb')"> 65<br>Tb</button>
+            </td>
+            <td class="color_4">
+                <button class="button1" onclick="adicionarElemento('Dy')">  66<br/>Dy</button>
+            </td>
+            <td class="color_4">
+                <button class="button1" onclick="adicionarElemento('Ho')"> 67<br/>Ho</button>
+            </td>
+            <td class="color_4">
+                <button class="button1" onclick="adicionarElemento('Er')"> 68<br/>Er</button>
+            </td>
+            <td class="color_4">
+                <button class="button1" onclick="adicionarElemento('Tm')"> 69<br />Tm </button>
+            </td>
+            <td class="color_4">
+                <button class="button1" onclick="adicionarElemento('Yb')">  70<br />Yb </button>
+            </td>
+            <td class="color_4">
+                <button class="button1" onclick="adicionarElemento('Lu')"> 71<br />Lu </button>
+            </td>
+            <td class="noBorder" colspan="1" rowspan="1"></td>
+        </tr>
+        <tr>
+            <td class="color_4">
+               <button class="button1" onclick="adicionarElemento('Ac')"><br>Ac</button>
+            </td>
+            <td class="color_4">
+                <button class="button1" onclick="adicionarElemento('Th')">90<br>Th</button>
+            </td>
+            <td class="color_4">
+                <button class="button1" onclick="adicionarElemento('Pa')">91<br>Pa</button>
+            </td>
+            <td class="color_4">
+                <button class="button1" onclick="adicionarElemento('U')">92<br>U</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Np')">93<br>Np</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Pu')">94<br>Pu</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Am')">95<br>Am</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Cm')">96<br>Cm</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Bk')">97<br>Bk</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Cf')">98<br>Cf</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Es')">99<br>Es</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Fm')">100<br>Fm</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Md')">101<br>Md</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button class="button1" onclick="adicionarElemento('No')">102<br>No</button>
+            </td>
+            <td class="color_4 text_color_red">
+                <button class="button1" onclick="adicionarElemento('Lr')">103<br>Lr</button>
+            </td>
+    </table>
+</center>
+
+    <script>
+        var campoAtivo = null;
+
+        function adicionarElemento(elemento) {
+            var barras = document.getElementsByClassName('barra');
+            for (var i = 0; i < barras.length; i++) {
+                if (barras[i] === campoAtivo) {
+                    barras[i].value += elemento;
+                }
+            }
+        }
+
+        var barras = document.getElementsByClassName('barra');
+        for (var i = 0; i < barras.length; i++) {
+            barras[i].addEventListener('focus', function () {
+                campoAtivo = this;
+            });
+        }
+    </script>
+
+</body>
+</html>
